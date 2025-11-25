@@ -73,9 +73,3 @@ async def health_check():
         "redis": redis_status
     }
 
-# 서버 실행 체크
-@app.get("/")
-async def root():
-    return {"message": "Hello World"}
-
-
