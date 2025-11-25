@@ -7,6 +7,7 @@ pydantic-settings
 langchain
 openai
 pdfplumber
+pypdf
 python-docx
 beautifulsoup4
 aiohttp
