@@ -1,7 +1,7 @@
 import re
 from dataclasses import dataclass
 from typing import List, Optional
-
+import asyncio
 import requests
 from bs4 import BeautifulSoup
 
@@ -12,7 +12,7 @@ from app.post_analysis.infrastructure.service.openai_service_impl import OpenAIS
 class Article:
     title: str
     content: str
-    url: str
+    anlysis: str
 
 
 class CrawlingEngine:
@@ -77,16 +77,30 @@ class CrawlingEngine:
             title, content = self.parse_article(res.text)
 
             # OpenAI 분석
-            analysis = self.OAS.analyze_stock_post(content)
+
             print(f"제목: {title}")
             print(f"본문: {content[:200]}...")
-            print(f"분석: {analysis}")
 
-            articles.append(Article(title=title, content=content, url=link))
+
+            articles.append(Article(title=title, content=content, anlysis=link))
 
         return articles
+
+    # aync test
+    async def article_analysis(self)-> List[Article]:
+        articles=self.crawl_pages()
+        return_articles = []
+        for article in articles:
+            analysis = await self.OAS.analyze_stock_post(article.content)
+
+            print(f"분석: {type(analysis)}")
+            print(f"분석: {(analysis)}")
+
+            return_articles.append(Article(title=article.title, content=article.content, analysis=analysis))
+        return return_articles
+
 
     # 기존 메서드 (호환성 유지)
     def get_page_to_list(self):
         """기존 메서드 - crawl_pages로 대체됨"""
-        return self.crawl_pages()
+        return self.article_analysis()
