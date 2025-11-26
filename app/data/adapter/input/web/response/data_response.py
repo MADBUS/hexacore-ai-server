@@ -1,12 +1,6 @@
-from datetime import datetime
 from typing import List
 
 from pydantic import BaseModel, ConfigDict
-
-
-class DataKeywordResponse(BaseModel):
-    id: int
-    name: str
 
 
 class DataResponse(BaseModel):
@@ -17,5 +11,4 @@ class DataResponse(BaseModel):
     id: int
     title: str
     content: str
-    published_at: datetime
-    keywords: List[DataKeywordResponse]
+    keywords: List[str]
