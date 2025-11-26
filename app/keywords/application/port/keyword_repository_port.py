@@ -25,3 +25,10 @@ class KeywordRepositoryPort(ABC):
         ID로 키워드 조회
         """
         raise NotImplementedError
+
+    @abstractmethod
+    def get_all(self) -> List[Keyword]:
+        """
+        모든 키워드 목록 조회 (중복 제거)
+        """
+        raise NotImplementedError
