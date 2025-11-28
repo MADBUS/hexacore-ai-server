@@ -13,7 +13,6 @@ beautifulsoup4
 aiohttp
 sqlalchemy
 pymysql
-redis
 lxml
 pytest
 pytest-mock

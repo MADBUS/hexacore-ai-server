@@ -50,18 +50,8 @@ setup_routers(app)
 @app.get("/health")
 async def health_check():
     """서버 상태 체크"""
-    db_status = "ok"
-    redis_status = "ok"
-
-    try:
-        redis_client = get_redis()
-        redis_client.ping()
-    except Exception as e:
-        redis_status = f"error: {str(e)}"
-
     return {
         "status": "healthy",
-        "database": db_status,
-        "redis": redis_status
+        "database": "ok"
     }
 
