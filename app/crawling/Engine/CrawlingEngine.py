@@ -1,18 +1,13 @@
 import re
-from contextlib import asynccontextmanager
-from dataclasses import dataclass, field
-from sched import scheduler
+from dataclasses import dataclass
 from typing import List, Optional, Dict, Any
-import asyncio
+
 import requests
 from bs4 import BeautifulSoup
 
-
-from app.crawling.Engine.prompts import STRICT_JSON_PROMPT, CRAWLING_JSON_PROMPT
-
+from app.crawling.Engine.prompts import CRAWLING_JSON_PROMPT
 from app.data.domain.data import Data
 from app.post_analysis.infrastructure.service.openai_service_impl import OpenAIServiceImpl
-
 
 
 @dataclass
