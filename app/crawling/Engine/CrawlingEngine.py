@@ -111,7 +111,9 @@ class CrawlingEngine:
                 title=analysis.get("title"),
                 content=analysis.get("content"),
                 keywords=analysis.get("keywords"),
-                published_at=article.published_at
+                published_at=article.published_at,
+                url=article.url,
+                analysis=analysis
             ))
 
         return return_articles

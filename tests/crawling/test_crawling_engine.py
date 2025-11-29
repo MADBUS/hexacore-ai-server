@@ -57,7 +57,7 @@ class TestCrawlingEngine:
         </html>
         """
 
-        title, content = engine.parse_article(html)
+        title, content, published_at = engine.parse_article(html)
 
         assert title == "테스트 게시글 제목"
         assert "게시글 본문 내용입니다" in content
@@ -75,7 +75,7 @@ class TestCrawlingEngine:
         </html>
         """
 
-        title, content = engine.parse_article(html)
+        title, content, published_at = engine.parse_article(html)
 
         assert title == "제목 없음"
         assert "본문만 있는 게시글" in content
@@ -90,7 +90,7 @@ class TestCrawlingEngine:
         </html>
         """
 
-        title, content = engine.parse_article(html)
+        title, content, published_at = engine.parse_article(html)
 
         assert title == "제목만 있는 게시글"
         assert content == ""
